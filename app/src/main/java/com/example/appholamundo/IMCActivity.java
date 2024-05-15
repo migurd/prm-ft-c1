@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,16 +37,36 @@ public class IMCActivity extends AppCompatActivity {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double height = Float.parseFloat(txtHeight.getText().toString());
-                double weight = Double.parseDouble(txtWeight.getText().toString());
+                try {
+                    double height = Float.parseFloat(txtHeight.getText().toString());
+                    double weight = Double.parseDouble(txtWeight.getText().toString());
 
-                double imc = weight / Math.pow(height, 2);
+                    if (height <= 0 || weight <= 0) {
+                        throw new IllegalArgumentException("Los valores no pueden ser iguales o menores a 0.");
+                    }
 
-                DecimalFormat df = new DecimalFormat("#.##");
-                String imcStr =  df.format(imc);
+                    double imc = weight / Math.pow(height, 2);
 
-                lblResultado.setText("Tu IMC es: " + imcStr);
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    String imcStr =  df.format(imc);
 
+                    lblResultado.setText("Tu IMC es: " + imcStr);
+                }
+                catch (NumberFormatException e) {
+                    Toast.makeText(IMCActivity.this, "Inserta un valor numérico para altura y peso, por favor.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                catch (IllegalArgumentException e) {
+                    Toast.makeText(IMCActivity.this, "Error: " + e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnLimpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lblResultado.setText("Tu IMC es: ");
             }
         });
 
