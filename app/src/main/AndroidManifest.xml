@@ -13,10 +13,13 @@
         android:theme="@style/Theme.AppHolaMundo"
         tools:targetApi="31">
         <activity
+            android:name=".IMCActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".IMCActivity"
+            android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
