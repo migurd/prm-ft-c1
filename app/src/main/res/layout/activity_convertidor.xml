@@ -35,18 +35,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Cantidad de pesos mexicanos"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Inserte cantidad de monedas, por favor"
+                android:id="@+id/inMonedas"
+                android:hint="Inserte cantidad de monedas, por favor"/>
+            <Spinner
+                android:id="@+id/spinnerMonedas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="40dp"
+                android:padding="10dp"
+                android:background="@drawable/spinner_style_coin"/>
+<!--            Result -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="Resultado"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/outResultado"
+                    android:text="_____"/>
+            </LinearLayout>
+
+<!--            Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnCalcular"
+                    android:text="Calcular"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/spinner_style_coin"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnLimpiar"
+                    android:text="Limpiar"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/spinner_style_coin"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnRegresar"
+                    android:text="Regresar"
+                    android:background="@drawable/spinner_style_coin"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

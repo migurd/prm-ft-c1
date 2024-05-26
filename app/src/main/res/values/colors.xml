@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="mio">#FF000B</color>
     <color name="sky_blue">#87CEEB</color>
+    <color name="gray">#dddddd</color>
 </resources>
