@@ -21,28 +21,37 @@
             android:text="Práctica de IMC">
         </TextView>
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtAltura"
-            android:hint="Escribe tu altura en m">
-        </EditText>
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtPeso"
-            android:hint="Escribe tu peso en kg">
-        </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAltura"
+                android:hint="Escribe tu altura en m">
+            </EditText>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/mio"
-            android:gravity="center"
-            android:id="@+id/lblResultado"
-            android:text="Tu IMC es:">
-        </TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPeso"
+                android:hint="Escribe tu peso en kg">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/mio"
+                android:gravity="center"
+                android:id="@+id/lblResultado"
+                android:text="Tu IMC es:">
+            </TextView>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,15 +63,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnCalcular"
-                android:text="Calcular">
-            </Button>
-
+                android:text="Calcular"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnLimpiar"
-                android:text="Limpiar">
-            </Button>
+                android:text="Limpiar"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnRegresar"
+                android:text="Regresar"/>
         </LinearLayout>
 
     </LinearLayout>

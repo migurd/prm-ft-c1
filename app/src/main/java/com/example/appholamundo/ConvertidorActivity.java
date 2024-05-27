@@ -37,32 +37,47 @@ public class ConvertidorActivity extends AppCompatActivity {
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double res = 0;
-                double in = Double.parseDouble(inCoins.getText().toString());
-                final double MXNTOUSD = 0.059896414;
-                final double MXNTOEUR = 0.055216282;
-                final double MXNTOCAD = 0.081852617;
-                final double MXNTOLBP = 5360.358;
+                try {
+                    if (inCoins.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte un valor, por favor.");
 
-                switch (spinnerCoins.getSelectedItemPosition()) {
-                    case 0:
-                        res = in * MXNTOUSD;
-                        break;
-                    case 1:
-                        res = in * MXNTOEUR;
-                        break;
-                    case 2:
-                        res = in * MXNTOCAD;
-                        break;
-                    case 3:
-                        res = in * MXNTOLBP;
-                        break;
+                    double res = 0;
+                    double in = Double.parseDouble(inCoins.getText().toString());
+
+                    if (in < 0)
+                        throw new IllegalArgumentException("Inserte una cantidad de monedas válido, por favor.");
+
+                    final double MXNTOUSD = 0.059896414;
+                    final double MXNTOEUR = 0.055216282;
+                    final double MXNTOCAD = 0.081852617;
+                    final double MXNTOLBP = 5360.358;
+
+                    switch (spinnerCoins.getSelectedItemPosition()) {
+                        case 0:
+                            res = in * MXNTOUSD;
+                            break;
+                        case 1:
+                            res = in * MXNTOEUR;
+                            break;
+                        case 2:
+                            res = in * MXNTOCAD;
+                            break;
+                        case 3:
+                            res = in * MXNTOLBP;
+                            break;
+                    }
+
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    String formattedRes = df.format(res);
+
+                    outRes.setText("$" + formattedRes);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(ConvertidorActivity.this, "Inserte un número, por favor.",
+                            Toast.LENGTH_SHORT).show();
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(ConvertidorActivity.this, e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
                 }
-
-                DecimalFormat df = new DecimalFormat("#.##");
-                String formattedRes = df.format(res);
-
-                outRes.setText("$" + formattedRes);
             }
         });
 
@@ -70,6 +85,7 @@ public class ConvertidorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 outRes.setText("_____");
+                inCoins.setText("");
             }
         });
 

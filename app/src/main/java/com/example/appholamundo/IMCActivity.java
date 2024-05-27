@@ -21,6 +21,7 @@ public class IMCActivity extends AppCompatActivity {
     private EditText txtHeight;
     private Button btnCalcular;
     private Button btnLimpiar;
+    private Button btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class IMCActivity extends AppCompatActivity {
 
         btnCalcular = (Button) findViewById(R.id.btnCalcular);
         btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
+        btnRegresar = (Button) findViewById(R.id.btnRegresar);
         txtHeight = (EditText) findViewById(R.id.txtAltura);
         txtWeight = (EditText) findViewById(R.id.txtPeso);
         lblResultado = (TextView) findViewById(R.id.lblResultado);
@@ -38,6 +40,11 @@ public class IMCActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    if (txtHeight.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte una altura, por favor.");
+                    if (txtWeight.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte un peso, por favor.");
+
                     double height = Float.parseFloat(txtHeight.getText().toString());
                     double weight = Double.parseDouble(txtWeight.getText().toString());
 
@@ -67,6 +74,14 @@ public class IMCActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lblResultado.setText("Tu IMC es: ");
+                txtHeight.setText("");
+                txtWeight.setText("");
+            }
+        });
+        btnRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

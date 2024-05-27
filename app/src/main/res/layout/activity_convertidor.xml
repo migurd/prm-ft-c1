@@ -55,7 +55,8 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginHorizontal="40dp"
                 android:padding="10dp"
-                android:background="@drawable/spinner_style_coin"/>
+                android:textAlignment="center"
+                android:background="@drawable/spinner_monedas"/>
 <!--            Result -->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -87,20 +88,20 @@
                     android:id="@+id/btnCalcular"
                     android:text="Calcular"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/spinner_style_coin"/>
+                    android:background="@drawable/btn_monedas"/>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnLimpiar"
                     android:text="Limpiar"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/spinner_style_coin"/>
+                    android:background="@drawable/btn_monedas"/>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnRegresar"
                     android:text="Regresar"
-                    android:background="@drawable/spinner_style_coin"/>
+                    android:background="@drawable/btn_monedas"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

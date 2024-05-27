@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="mio">#FF000B</color>
-    <color name="sky_blue">#87CEEB</color>
-    <color name="gray">#dddddd</color>
+    <color name="sky_blue">#5A8EA4</color>
+    <color name="gray">#D7D7D7</color>
+    <color name="yellow">#C3BE35</color>
 </resources>

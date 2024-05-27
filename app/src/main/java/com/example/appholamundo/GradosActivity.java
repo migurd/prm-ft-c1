@@ -45,21 +45,40 @@ public class GradosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Celsius to fahrenheit when 0, backwards if 1
                 double res = 0;
-                if (selectedIndex[0] == 0)
-                    res = (double) 9 / 5 * Double.parseDouble(inputDegrees.getText().toString()) + 32;
-                else if (selectedIndex[0] == 1)
-                    res = (Double.parseDouble(inputDegrees.getText().toString()) - 32) * 5 / 9;
+                double in = 0; // input
+                try {
+                    if (selectedIndex[0] == -1)
+                        throw new IllegalArgumentException("Seleccione a qué grado desea transformar el input.");
 
-                DecimalFormat df = new DecimalFormat("#.##");
-                String formattedResult = df.format(res);
-                txtResult.setText(formattedResult);
+                    if (inputDegrees.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte un valor, por favor.");
+                    in = Double.parseDouble(inputDegrees.getText().toString());
+
+                    if (selectedIndex[0] == 0)
+                        res = (double) 9 / 5 * in + 32;
+                    else if (selectedIndex[0] == 1)
+                        res = (Double.parseDouble(inputDegrees.getText().toString()) - 32) * 5 / 9;
+
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    String formattedResult = df.format(res);
+                    txtResult.setText(formattedResult);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(GradosActivity.this, "Insertar un número válido, por favor.",
+                            Toast.LENGTH_SHORT).show();
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(GradosActivity.this, e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         btnClean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtResult.setText("");
+                txtResult.setText("_____");
+                inputDegrees.setText("");
+                rgDegrees.clearCheck();
+                selectedIndex[0] = -1;
             }
         });
 
@@ -80,7 +99,7 @@ public class GradosActivity extends AppCompatActivity {
                 else if (checkedId == R.id.rbFahrenheit)
                     selectedIndex[0] = 1;
 
-                Toast.makeText(GradosActivity.this, "hey: " + selectedIndex[0], Toast.LENGTH_SHORT).show();
+//                Toast.makeText(GradosActivity.this, "hey: " + selectedIndex[0], Toast.LENGTH_SHORT).show();
             }
         });
 
