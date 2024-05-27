@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,10 +34,17 @@ public class MenuCotizacionActivity extends AppCompatActivity {
                 int folio = rand.nextInt(99) + 1;
 
                 Intent intent = new Intent(MenuCotizacionActivity.this, MainCotizacionActivity.class);
-                intent.putExtra("name", inName.getText().toString());
-                intent.putExtra("folio", folio);
+                try {
+                    if (inName.getText().toString().isEmpty())
+                        throw new IllegalArgumentException("Inserte un nombre, por favor.");
 
-                startActivity(intent);
+                    intent.putExtra("name", inName.getText().toString());
+                    intent.putExtra("folio", folio);
+                    startActivity(intent);
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(MenuCotizacionActivity.this, e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
