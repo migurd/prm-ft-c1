@@ -37,18 +37,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
+                    android:textSize="18sp"
                     android:text="Grados"/>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/inputGrados"
-                    android:textSize="14dp"
+                    android:textSize="18sp"
+                    android:inputType="numberDecimal"
+                    android:padding="20dp"
                     android:hint="Insertar grados"/>
 
             </LinearLayout>
@@ -64,11 +68,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rbCelsius"
+                    android:textSize="18sp"
+                    android:padding="20dp"
                     android:text="Celsius to Fahrenheit"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rbFahrenheit"
+                    android:textSize="18sp"
+                    android:padding="20dp"
                     android:text="Fahrenheit to Celsius"/>
             </RadioGroup>
 

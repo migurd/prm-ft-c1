@@ -31,15 +31,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtAltura"
-                android:hint="Escribe tu altura en m">
-            </EditText>
+                android:inputType="numberDecimal"
+                android:padding="20dp"
+                android:hint="Escribe tu altura en m"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtPeso"
-                android:hint="Escribe tu peso en kg">
-            </EditText>
+                android:inputType="numberDecimal"
+                android:padding="20dp"
+                android:hint="Escribe tu peso en kg"/>
 
             <TextView
                 android:layout_width="match_parent"

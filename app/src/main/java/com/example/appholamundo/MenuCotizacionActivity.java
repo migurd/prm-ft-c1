@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class MenuCotizacionActivity extends AppCompatActivity {
     private EditText inName;
-    private Button btnNext;
+    private Button btnNext, btnRegresar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,12 @@ public class MenuCotizacionActivity extends AppCompatActivity {
                 }
             }
         });
+        btnRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -58,5 +64,6 @@ public class MenuCotizacionActivity extends AppCompatActivity {
     public void init() {
          inName = (EditText) findViewById(R.id.inNombre);
          btnNext = (Button) findViewById(R.id.btnNext);
+         btnRegresar = (Button) findViewById(R.id.btnRegresar);
     }
 }
