@@ -30,8 +30,8 @@ public class MenuCotizacionActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random rand = new Random();
-                int folio = rand.nextInt(99) + 1;
+                // Random rand = new Random();
+                // int folio = rand.nextInt(99) + 1;
 
                 Intent intent = new Intent(MenuCotizacionActivity.this, MainCotizacionActivity.class);
                 try {
@@ -39,7 +39,7 @@ public class MenuCotizacionActivity extends AppCompatActivity {
                         throw new IllegalArgumentException("Inserte un nombre, por favor.");
 
                     intent.putExtra("name", inName.getText().toString());
-                    intent.putExtra("folio", folio);
+                    // intent.putExtra("folio", folio);
                     startActivity(intent);
                 } catch (IllegalArgumentException e) {
                     Toast.makeText(MenuCotizacionActivity.this, e.getMessage(),

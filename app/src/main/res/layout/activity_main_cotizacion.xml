@@ -127,19 +127,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="horizontal">
                 <Button
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Calcular"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnCalculate"/>
                 <Button
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Limpiar"
+                    android:layout_marginEnd="10dp"
                     android:id="@+id/btnClean"/>
                 <Button
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Regresar"
                     android:id="@+id/btnRegresar"/>

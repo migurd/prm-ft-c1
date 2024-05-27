@@ -24,6 +24,7 @@ public class MainCotizacionActivity extends AppCompatActivity {
     private Button btnCalculate, btnClean, btnReturn;
     private RadioGroup rgPeriods;
     private RadioButton rb12, rb18, rb24, rb36;
+    private Cotizacion cotizacion = new Cotizacion();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,28 +45,28 @@ public class MainCotizacionActivity extends AppCompatActivity {
                     if (inInitialPaymentPercentage.getText().toString().isEmpty())
                         throw new IllegalArgumentException("Pago inicial no puede estar vacía.");
 
-                    double carValue = Double.parseDouble(inCarValue
-                            .getText().toString());
-                    if (carValue < 0)
+                    cotizacion.setCarValue(Double.parseDouble(inCarValue
+                            .getText().toString()));
+                    if (cotizacion.getCarValue() < 0)
                         throw new IllegalArgumentException("El automóvil no puede tener un valor negativo.");
-                    double initialPaymentPer = Double.parseDouble(inInitialPaymentPercentage
-                            .getText().toString()); // percentage
-                    if (initialPaymentPer < 0 || initialPaymentPer > 100)
+                    cotizacion.setFirstPaymentPer(Double.parseDouble(inInitialPaymentPercentage
+                            .getText().toString())); // percentage
+                    if (cotizacion.getFirstPaymentPer() < 0 || cotizacion.getFirstPaymentPer() > 100)
                         throw new IllegalArgumentException("Porcentaje de pago no puede estar por debajo de 0% ni superar 100%.");
 
                     int checkedRadioButtonId = rgPeriods.getCheckedRadioButtonId();
 
-                    int period = checkedRadioButtonId == rb12.getId() ? 12 :
+                    cotizacion.setPeriods(checkedRadioButtonId == rb12.getId() ? 12 :
                             checkedRadioButtonId == rb18.getId() ? 18 :
                                     checkedRadioButtonId == rb24.getId() ? 24 :
-                                            checkedRadioButtonId == rb36.getId() ? 36 : -1;
+                                            checkedRadioButtonId == rb36.getId() ? 36 : -1);
 
-                    if (period == -1)
+                    if (cotizacion.getPeriods() == -1)
                         throw new IllegalArgumentException("Seleccione un periodo de pago, por favor.");
 
                     // From here on, everything has been validated. So, it should work, SHOULD.
-                    double firstPayment = carValue * (initialPaymentPer / 100);
-                    double monthlyPayment = (carValue - firstPayment) / period;
+                    double firstPayment = cotizacion.calculateFirstPayment();
+                    double monthlyPayment = cotizacion.calculateMonthlyPayment();
 
                     DecimalFormat df = new DecimalFormat("#.##");
                     String firstPaymentStr = df.format(firstPayment);
@@ -127,9 +128,10 @@ public class MainCotizacionActivity extends AppCompatActivity {
 
 //        set values for folio and name
         String name = getIntent().getStringExtra("name");
-        int folio = getIntent().getIntExtra("folio", 1);
 
-        outName.setText(name);
-        outFolio.setText(Integer.toString(folio));
+        cotizacion.setName(name);
+        cotizacion.setFolio(cotizacion.generateId());
+        outName.setText(cotizacion.getName());
+        outFolio.setText(Integer.toString(cotizacion.getFolio()));
     }
 }
