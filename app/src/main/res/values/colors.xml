@@ -6,4 +6,11 @@
     <color name="sky_blue">#5A8EA4</color>
     <color name="gray">#D7D7D7</color>
     <color name="yellow">#C3BE35</color>
+
+<!--    Spinner -->
+    <color name="colorPrimary">#3F5185</color>
+    <color name="colorPrimaryDark">#393F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTitulo">#FE4A23</color>
+    <color name="colorSubTitulo">#767474</color>
 </resources>
